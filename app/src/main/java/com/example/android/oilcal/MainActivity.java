@@ -2,6 +2,7 @@ package com.example.android.oilcal;
 
 import android.icu.text.DecimalFormat;
 import android.support.annotation.StringDef;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public Button eval;
     public EditText oil;
     public EditText mins;
+    public Button checkhistory;
     public String his;
     public Button reset;
     public TextView answer;
@@ -33,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         result=0.00;
+        checkhistory = (Button) findViewById(R.id.checkhistory);
         totalTime = (TextView) findViewById(R.id.totalTime);
-        history  = (TextView) findViewById(R.id.history);
+       // history  = (TextView) findViewById(R.id.history);
         add = (Button) findViewById(R.id.add);
         eval = (Button) findViewById(R.id.eval);
         his = "";
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         String display = String.format("%.2f",result);
                         his = his+'\n'+(hours.getText().toString())+" hrs "+(mins.getText().toString())+" mins";
                         //String t = hours.getText().toString();
-                        history.setText(his);
+                       // history.setText(his);
                         //totalTime.setText(t);
                         totalTime.setText(display);
 
@@ -80,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        checkhistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MainActivity.this).setTitle("Check History").setMessage(his).show();
+
+
+            }
+        });
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 mins.setText("");
                 answer.setText("Final Answer");
                 his="";
-                history.setText("History");
+               // history.setText("History");
                 result = 0.00;
                 totalTime.setText("Total Time");
                 oil.setText("");
