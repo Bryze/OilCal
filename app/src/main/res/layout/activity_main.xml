@@ -38,6 +38,7 @@
             android:gravity="center"
             android:theme="@style/EditTextStyle"
             android:inputType="phone"
+            android:imeOptions="actionSend"
             android:hint="Hours"
             android:id="@+id/hours"/>
 
@@ -48,7 +49,7 @@
             android:maxLines="1"
             android:theme="@style/EditTextStyle"
             android:hint="Mins"
-
+            android:imeOptions="actionSend"
             android:inputType="phone"
             android:id="@+id/mins"
             android:gravity="center"/>
@@ -80,6 +81,7 @@
             android:theme="@style/EditTextStyle"
             android:layout_height="wrap_content"
             android:hint="Oil Consumption"
+            android:imeOptions="actionSend"
             android:maxLines="1"
             android:gravity="center"
             android:inputType="phone"
